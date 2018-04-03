@@ -12,6 +12,7 @@ func _ready():
 	go_next_position()
 	spawn_ground()
 	go_next_position()
+	
 	spawn_ground()
 	go_next_position()
 	
