@@ -20,7 +20,7 @@ bounce = 0.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform", "Z Index" ]
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="sprite" type="Sprite" parent="." index="0"]
 
 position = Vector2( 0, 256 )
 texture = ExtResource( 2 )
@@ -28,7 +28,7 @@ centered = false
 offset = Vector2( 0, -56 )
 _sections_unfolded = [ "Offset", "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+[node name="shape" type="CollisionShape2D" parent="." index="1"]
 
 position = Vector2( 83.8204, 228.746 )
 scale = Vector2( 0.99795, 0.995711 )
