@@ -5,7 +5,7 @@
 [ext_resource path="res://scripts/camera.gd" type="Script" id=3]
 [ext_resource path="res://scenes/spawner_ground.tscn" type="PackedScene" id=4]
 
-[node name="gameStage" type="Node"]
+[node name="gameStage" type="Node" index="0"]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
@@ -16,7 +16,7 @@ _sections_unfolded = [ "Offset" ]
 
 [node name="bird" parent="." index="1" instance=ExtResource( 2 )]
 
-[node name="Camera2D" type="Camera2D" parent="." index="2"]
+[node name="camera" type="Camera2D" parent="." index="2"]
 
 offset = Vector2( -36, 0 )
 anchor_mode = 0

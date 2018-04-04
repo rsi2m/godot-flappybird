@@ -6,15 +6,12 @@ extends Node2D
 
 const scn_ground = preload("res://scenes/ground.tscn")
 const GROUND_WIDTH = 168
+const AMOUNT_TO_FILL_VIEW = 2
 
 func _ready():
-	spawn_ground()
-	go_next_position()
-	spawn_ground()
-	go_next_position()
-	
-	spawn_ground()
-	go_next_position()
+	for i in range(AMOUNT_TO_FILL_VIEW):
+		spawn_ground()
+		go_next_position()
 	
 	
 	# Called every time the node is added to the scene.
