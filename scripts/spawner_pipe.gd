@@ -26,7 +26,6 @@ func spawn_and_move():
 
 func go_init_position():
 	randomize()
-	
 	var init_pos = Vector2()
 	init_pos.x = get_viewport_rect().size.x + PIPE_WIDTH/2
 	init_pos.y = rand_range(OFFSET_Y,get_viewport_rect().size.y-GROUND_HEIGHT-OFFSET_Y)
@@ -36,6 +35,7 @@ func go_init_position():
 func spawn_pipe():
 	var new_pipe = scn_pipe.instance()
 	new_pipe.position = position
+	new_pipe.connect("tree_exited", self, "spawn_and_move")
 	get_node("container").add_child(new_pipe)
 	pass
 	

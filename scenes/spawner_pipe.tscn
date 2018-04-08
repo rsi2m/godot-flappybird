@@ -4,6 +4,7 @@
 
 [node name="spawner_pipe" type="Node2D"]
 
+editor/display_folded = true
 script = ExtResource( 1 )
 
 [node name="container" type="Node" parent="." index="0"]

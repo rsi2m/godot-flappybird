@@ -4,7 +4,7 @@ extends StaticBody2D
 # var a = 2
 # var b = "textvar"
 
-onready var bottom_right = get_node("bottom_right")
+onready var right = get_node("right")
 onready var camera = utils.get_main_node().get_node("camera")
 
 func _ready():
@@ -13,9 +13,10 @@ func _ready():
 	pass
 
 func _process(delta):
-	if camera == null : return
+	if camera == null: return
 	
-	if bottom_right.global_position.x <= camera.get_total_pos().x:
+	if right.global_position.x <= camera.get_total_pos().x:
+		print(right.position)
 		queue_free()
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
