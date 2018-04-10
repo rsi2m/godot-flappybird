@@ -12,11 +12,12 @@ const AMOUNT_TO_FILL_VIEW = 3
 const scn_pipe = preload("res://scenes/pipe.tscn")
 
 func _ready():
+	pass
+	
+func start():
 	go_init_position()
 	for i in range(AMOUNT_TO_FILL_VIEW):
 		spawn_and_move()
-	# Called every time the node is added to the scene.
-	# Initialization here
 	pass
 
 func spawn_and_move():

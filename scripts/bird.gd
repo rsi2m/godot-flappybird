@@ -2,7 +2,9 @@
 
 extends RigidBody2D
 
-onready var state = FlappingState.new(self)
+onready var state = FlyingState.new(self)
+
+var speed = 50
 
 const FLYING = 0
 const FLAPPING=1
@@ -47,9 +49,15 @@ func get_state():
 	
 class FlyingState:
 	var bird
+	var prev_gravity_scale
 	
 	func _init(bird):
 		self.bird = bird
+		bird.get_node("anim").play("flying")
+		bird.set_linear_velocity(Vector2(bird.speed, bird.get_linear_velocity().y))
+		
+		prev_gravity_scale = bird.get_gravity_scale()
+		bird.set_gravity_scale(0)
 		pass
 		
 	func _update(delta):
@@ -59,6 +67,7 @@ class FlyingState:
 		pass
 				
 	func exit():
+		bird.set_gravity_scale(prev_gravity_scale)
 		pass
 		
 		
@@ -69,7 +78,7 @@ class FlappingState:
 	func _init(bird):
 		self.bird = bird
 		
-		bird.set_linear_velocity(Vector2(50, bird.get_linear_velocity().y))
+		bird.set_linear_velocity(Vector2(bird.speed, bird.get_linear_velocity().y))
 		pass
 		
 	func _update(delta):

@@ -100,7 +100,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[node name="bird" type="RigidBody2D" index="0"]
+[node name="bird" type="RigidBody2D"]
 
 position = Vector2( 65.5293, 123.263 )
 input_pickable = false
