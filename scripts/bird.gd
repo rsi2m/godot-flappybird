@@ -14,6 +14,7 @@ const GROUNDED=3
 signal state_changed
 
 func _ready():
+	add_to_group(game.GROUP_BIRD)
 	connect("body_entered",self, "on_body_entered")
 	pass
 	
