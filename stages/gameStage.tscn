@@ -37,7 +37,7 @@ func _on_pressed():
 "
 _sections_unfolded = [ "Resource" ]
 
-[node name="world" type="Node" index="0"]
+[node name="world" type="Node"]
 
 [node name="bird" parent="." index="0" instance=ExtResource( 1 )]
 

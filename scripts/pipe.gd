@@ -10,6 +10,7 @@ onready var camera = utils.get_main_node().get_node("camera")
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
+	add_to_group(game.GROUP_PIPES)
 	pass
 
 func _process(delta):

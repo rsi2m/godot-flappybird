@@ -14,6 +14,12 @@ const GROUNDED=3
 signal state_changed
 
 func _ready():
+	connect("body_entered",self, "on_body_entered")
+	pass
+	
+func on_body_entered(other_body):
+	if state.has_method("on_body_entered"):
+		state.on_body_entered(other_body)
 	pass
 
 func _process(delta):
@@ -98,6 +104,13 @@ class FlappingState:
 			bird.set_angular_velocity(3)
 		pass
 		
+	func on_body_entered(other_body):
+		if other_body.is_in_group(game.GROUP_PIPES):
+			bird.set_state(bird.HIT)
+		elif other_body.is_in_group(game.GROUP_GROUNDS):
+			bird.set_state(bird.GROUNDED)
+		pass
+		
 	func flap():
 		bird.set_linear_velocity(Vector2(bird.get_linear_velocity().x, -150))
 		bird.set_angular_velocity(-3)
@@ -118,9 +131,19 @@ class HitState:
 	
 	func _init(bird):
 		self.bird = bird
+		bird.set_linear_velocity(Vector2(0,0))
+		bird.set_angular_velocity(2)
+		
+		var other_body = bird.get_colliding_bodies()[0]
+		bird.add_collision_exception_with(other_body)
 		pass
 		
 	func _update(delta):
+		pass
+		
+	func on_body_entered(other_body):
+		if other_body.is_in_group(game.GROUP_GROUNDS):
+			bird.set_state(bird.GROUNDED)
 		pass
 		
 	func _input(event):
@@ -136,6 +159,8 @@ class GroundedState:
 	
 	func _init(bird):
 		self.bird = bird
+		bird.set_linear_velocity(Vector2(0,0))
+		bird.set_angular_velocity(0)
 		pass
 		
 	func _update(delta):

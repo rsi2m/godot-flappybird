@@ -19,7 +19,7 @@ func _ready():
 	
 func on_bird_state_changed(bird):
 	if bird.get_state() == bird.FLAPPING:
-		start()	
+		start()
 	pass
 	
 func start():
@@ -38,6 +38,11 @@ func go_init_position():
 	var init_pos = Vector2()
 	init_pos.x = get_viewport_rect().size.x + PIPE_WIDTH/2
 	init_pos.y = rand_range(OFFSET_Y,get_viewport_rect().size.y-GROUND_HEIGHT-OFFSET_Y)
+	
+	var camera = utils.get_main_node().get_node("camera")
+	if camera:
+		init_pos.x += camera.get_total_pos().x
+	
 	position = init_pos
 	pass
 	
