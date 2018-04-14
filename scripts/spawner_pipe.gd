@@ -12,6 +12,14 @@ const AMOUNT_TO_FILL_VIEW = 3
 const scn_pipe = preload("res://scenes/pipe.tscn")
 
 func _ready():
+	var bird = utils.get_main_node().get_node("bird")
+	if bird:
+		bird.connect("state_changed",self,"on_bird_state_changed",[],CONNECT_ONESHOT)
+	pass
+	
+func on_bird_state_changed(bird):
+	if bird.get_state() == bird.FLAPPING:
+		start()	
 	pass
 	
 func start():

@@ -11,6 +11,8 @@ const FLAPPING=1
 const HIT     =2
 const GROUNDED=3
 
+signal state_changed
+
 func _ready():
 	pass
 
@@ -33,6 +35,9 @@ func set_state(new_state):
 		state = HitState.new(self)
 	elif new_state == GROUNDED:
 		state = GroundedState.new(self)
+	
+	emit_signal("state_changed",self)
+	
 	pass
 	
 func get_state():
@@ -68,6 +73,8 @@ class FlyingState:
 				
 	func exit():
 		bird.set_gravity_scale(prev_gravity_scale)
+		bird.get_node("anim").stop()
+		bird.get_node("anim_sprite").position = Vector2(0,0)
 		pass
 		
 		
@@ -79,6 +86,7 @@ class FlappingState:
 		self.bird = bird
 		
 		bird.set_linear_velocity(Vector2(bird.speed, bird.get_linear_velocity().y))
+		flap()
 		pass
 		
 	func _update(delta):

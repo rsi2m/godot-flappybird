@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/bird.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/camera.gd" type="Script" id=2]
@@ -7,10 +7,41 @@
 [ext_resource path="res://scenes/spawner_pipe.tscn" type="PackedScene" id=5]
 [ext_resource path="res://sprites/instructions.png" type="Texture" id=6]
 
+[sub_resource type="GDScript" id=1]
+
+resource_name = "btn_instructions"
+script/source = "extends TextureButton
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+	connect(\"pressed\",self,\"_on_pressed\")
+	grab_focus()
+	# Called every time the node is added to the scene.
+	# Initialization here
+	pass
+	
+func _on_pressed():
+	var bird = utils.get_main_node().get_node(\"bird\")
+	if bird:
+		bird.set_state(bird.FLAPPING)
+		hide()
+	pass
+
+#func _process(delta):
+#	# Called every frame. Delta is time since last frame.
+#	# Update game logic here.
+#	pass
+"
+_sections_unfolded = [ "Resource" ]
+
 [node name="world" type="Node" index="0"]
 
 [node name="bird" parent="." index="0" instance=ExtResource( 1 )]
 
+position = Vector2( 36, 120 )
 linear_damp = 0.0
 
 [node name="camera" type="Camera2D" parent="." index="1"]
@@ -72,9 +103,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = false
+action_mode = 0
 enabled_focus_mode = 2
 shortcut = null
 group = null
+script = SubResource( 1 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="texture" type="TextureRect" parent="hud/btn_instructions" index="0"]
