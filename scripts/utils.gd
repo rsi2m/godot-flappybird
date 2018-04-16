@@ -17,3 +17,14 @@ func get_main_node():
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
 #	pass
+
+func get_digits(number):
+	var str_number = str(number)
+	
+	var digits = []
+	
+	for i in range(str_number.length()):
+		digits.append(str_number[i].to_int())
+	pass
+	
+	return digits
