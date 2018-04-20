@@ -8,6 +8,11 @@ var GROUP_PIPES = "pipes"
 var GROUP_GROUNDS = "ground"
 var GROUP_BIRD = "bird"
 
+const MEDAL_BRONZE = 1
+const MEDAL_SILVER = 2
+const MEDAL_GOLD = 3
+const MEDAL_PLATINUM = 4
+
 var score_best = 0 setget _set_score_best
 var score_curent = 0 setget _set_score_current
 
