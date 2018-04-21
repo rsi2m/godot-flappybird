@@ -15,6 +15,7 @@ signal state_changed
 
 func _ready():
 	add_to_group(game.GROUP_BIRD)
+	set_process_unhandled_input(true)
 	connect("body_entered",self, "on_body_entered")
 	pass
 	
@@ -29,6 +30,11 @@ func _process(delta):
 
 func _input(event):
 	state._input(event)
+	pass
+	
+func _unhandled_input(event):
+	if state.has_method("_unhandled_input"):
+		state._unhandled_input(event)
 	pass
 	
 func set_state(new_state):
@@ -94,6 +100,14 @@ class FlappingState:
 		
 		bird.set_linear_velocity(Vector2(bird.speed, bird.get_linear_velocity().y))
 		flap()
+		pass
+		
+	func _unhandled_input(event):
+		if !(event is InputEventMouseButton) or !event.is_pressed() or event.is_echo():
+			return
+		
+		if event.button_index == BUTTON_LEFT:
+			flap()
 		pass
 		
 	func _update(delta):
