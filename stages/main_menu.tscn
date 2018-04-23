@@ -38,7 +38,7 @@ func _on_pressed():
 "
 _sections_unfolded = [ "Resource" ]
 
-[node name="main_menu" type="Node" index="0"]
+[node name="main_menu" type="Node"]
 
 [node name="camera" type="Camera2D" parent="." index="0"]
 
@@ -131,6 +131,7 @@ _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="hbox_buttons" type="HBoxContainer" parent="hud" index="2"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
