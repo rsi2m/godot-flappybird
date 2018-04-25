@@ -13,6 +13,7 @@ func _ready():
 func on_body_enter(other_body):
 	if other_body.is_in_group(game.GROUP_BIRD):
 		game.score_curent += 1
+		audio_player.get_node("point").play()
 		pass
 	pass
 
